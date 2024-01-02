@@ -1,6 +1,6 @@
 import { ApplyOptions } from '@sapphire/decorators'
 import { Subcommand } from '@sapphire/plugin-subcommands'
-import { type Message } from 'discord.js'
+import { ChatInputCommandInteraction, Message } from 'discord.js'
 import * as _ from 'lodash'
 import { getLeaderboard } from '../../lib/repo-rater'
 import { defaultEmbed, loadingEmbed } from '../../lib/embed'
@@ -17,16 +17,32 @@ import { PaginatedMessage } from '@sapphire/discord.js-utilities'
     {
       name: 'voters',
       messageRun: 'voters',
+      chatInputRun: 'voters',
       default: true
     }
   ]
 })
 
 export class LeaderboardCommand extends Subcommand {
-  public async voters (message: Message): Promise<Message> {
-    const response = await message.reply({
-      embeds: [loadingEmbed(message)]
-    })
+  public override registerApplicationCommands (registry: Subcommand.Registry): void {
+    registry.registerChatInputCommand((builder) => builder
+      .setName(this.name)
+      .setDescription(this.description)
+      .addSubcommand((subcommand) => subcommand
+        .setName('voters')
+        .setDescription('Check the top voters.')
+      )
+    )
+  }
+
+  public async voters (message: Message | ChatInputCommandInteraction): Promise<Message | ChatInputCommandInteraction> {
+    let response = message
+
+    if (message instanceof ChatInputCommandInteraction) {
+      await message.deferReply()
+    } else if (message instanceof Message) {
+      response = await message.reply({ embeds: [loadingEmbed(message)] })
+    }
 
     const leaderboard = await getLeaderboard()
 
