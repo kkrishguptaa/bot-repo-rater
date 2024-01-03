@@ -10,6 +10,7 @@
 - **/leaderboard voters** - Check the top 10 voters
 - **/leaderboard projects** `[COMING SOON]` - Check the top 10 projects
 - **/project <project_name>** `[COMING SOON]` - Check the details of a project
+- **/vote <project_name>** `[COMING SOON]` - Drops a link for you to vote the project
 
 ## 🛠️ Technologies Used
 
