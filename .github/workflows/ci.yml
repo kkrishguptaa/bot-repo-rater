@@ -7,6 +7,7 @@ on:
 
 env:
   APP_NAME: bot-repo-rater
+  NODE_VERSION: 21
 
 jobs:
   build:
@@ -18,7 +19,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: ${{ env.NODE_VERSION }}
       - name: Install Dependencies
         run: yarn install --frozen-lockfile
       - name: Build
