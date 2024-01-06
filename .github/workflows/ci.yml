@@ -17,7 +17,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v4
         with:
           node-version: ${{ env.NODE_VERSION }}
       - name: Install Dependencies
@@ -50,7 +50,7 @@ jobs:
           git checkout -b ${{ env.PR_BRANCH }}
 
       - name: Create Changelog
-        uses: TriPSs/conventional-changelog-action@8118086024a5380b05b0d54ed2181516082e090f # v4
+        uses: TriPSs/conventional-changelog-action@dd734f74fce61a6e02f821ee1b5930bc79a23534 # v5
         id: changelog
         with:
           github-token: ${{ github.token }}
@@ -138,7 +138,7 @@ jobs:
           password: ${{ secrets.GH_OWNER_TOKEN }}
 
       - name: Setup Docker Metadata
-        uses: docker/metadata-action@9dc751fe249ad99385a2583ee0d084c400eee04e # v5
+        uses: docker/metadata-action@dbef88086f6cef02e264edb7dbf63250c17cef6c # v5
         id: meta
         with:
           images: |
