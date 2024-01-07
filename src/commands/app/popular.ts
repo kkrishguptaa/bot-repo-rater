@@ -53,7 +53,7 @@ export class PopularCommand extends Command {
       paginatedMessage.addPageEmbed((embed) => {
         embed.addFields(chunk.map((entry, index) => {
           return {
-            name: `#${index + 1} [${entry.owner}/${entry.name}](https://github.com/${entry.owner}/${entry.name})`,
+            name: `#${index + 1} ${entry.owner}/${entry.name}`,
             value: `${entry.votes} votes`
           }
         }))
