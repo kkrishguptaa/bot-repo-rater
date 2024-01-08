@@ -18,7 +18,8 @@
     "colorette": "^2.0.20",
     "common-tags": "^1.8.2",
     "discord.js": "14.x",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "repo-rater.js": "^1.1.0"
   },
   "devDependencies": {
     "@sapphire/cli": "1.9.1",

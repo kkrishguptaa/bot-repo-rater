@@ -2178,6 +2178,11 @@ regexp.prototype.flags@^1.5.0, regexp.prototype.flags@^1.5.1:
     define-properties "^1.2.0"
     set-function-name "^2.0.0"
 
+repo-rater.js@^1.1.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/repo-rater.js/-/repo-rater.js-1.2.0.tgz#50e9307ff94a9e3f56be58b775cf8b53ea5d38a8"
+  integrity sha512-A3Azq/RVRmCU+a4ykzsFH+3gr0FkWrFMCgKnnQLFvWo68xtFSyvu6T3O+6CWKrNSYUofo3qd8x2cdKidGIjGdw==
+
 resolve-from@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-4.0.0.tgz#4abcd852ad32dd7baabfe9b40e00a36db5f392e6"

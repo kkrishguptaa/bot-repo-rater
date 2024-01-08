@@ -1,10 +1,10 @@
 import { ApplyOptions } from '@sapphire/decorators'
 import { ChatInputCommandInteraction, Message } from 'discord.js'
 import * as _ from 'lodash'
-import { getPopular } from '../../lib/repo-rater'
 import { defaultEmbed, loadingEmbed } from '../../lib/embed'
 import { PaginatedMessage } from '@sapphire/discord.js-utilities'
 import { Command } from '@sapphire/framework'
+import repoRater from 'repo-rater.js'
 
 @ApplyOptions<Command.Options>({
   description: 'Find the most popular repositories on RepoRater 📈',
@@ -39,7 +39,7 @@ export class PopularCommand extends Command {
       response = await message.reply({ embeds: [loadingEmbed(message)] }) as T
     }
 
-    const popular = await getPopular()
+    const popular = await repoRater('GET /popular', undefined, undefined)
 
     const paginatedMessage = new PaginatedMessage({
       template: {
@@ -47,7 +47,7 @@ export class PopularCommand extends Command {
       }
     })
 
-    const chunked = _.chunk(popular, 10)
+    const chunked = _.chunk([...popular], 10)
 
     chunked.forEach((chunk) => {
       paginatedMessage.addPageEmbed((embed) => {

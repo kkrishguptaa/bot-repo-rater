@@ -2,9 +2,10 @@ import { ApplyOptions } from '@sapphire/decorators'
 import { Subcommand } from '@sapphire/plugin-subcommands'
 import { ChatInputCommandInteraction, Message } from 'discord.js'
 import * as _ from 'lodash'
-import { getLeaderboard } from '../../lib/repo-rater'
 import { defaultEmbed, loadingEmbed } from '../../lib/embed'
 import { PaginatedMessage } from '@sapphire/discord.js-utilities'
+
+import repoRater from 'repo-rater.js'
 
 @ApplyOptions<Subcommand.Options>({
   aliases: ['lb', 'top'],
@@ -44,7 +45,7 @@ export class LeaderboardCommand extends Subcommand {
       response = await message.reply({ embeds: [loadingEmbed(message)] })
     }
 
-    const leaderboard = await getLeaderboard()
+    const leaderboard = await repoRater('GET /leaderboard', undefined, undefined)
 
     const paginatedMessage = new PaginatedMessage({
       template: {
@@ -52,7 +53,7 @@ export class LeaderboardCommand extends Subcommand {
       }
     })
 
-    const chunked = _.chunk(leaderboard, 10)
+    const chunked = _.chunk([...leaderboard], 10)
 
     chunked.forEach((chunk) => {
       paginatedMessage.addPageEmbed((embed) => {
