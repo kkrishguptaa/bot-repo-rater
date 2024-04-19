@@ -41,7 +41,7 @@
     "prettier": "3.2.5",
     "tsc-watch": "6.2.0",
     "typescript": "5.4.5",
-    "zod": "3.22.4"
+    "zod": "3.22.5"
   },
   "scripts": {
     "sapphire": "sapphire",
