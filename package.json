@@ -1,6 +1,6 @@
 {
   "name": "bot-repo-rater",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "main": "dist/index.js",
   "author": "@xkrishguptaa",
   "license": "MIT",
