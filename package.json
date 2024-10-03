@@ -26,7 +26,7 @@
     "@sapphire/prettier-config": "2.0.0",
     "@sapphire/ts-config": "5.0.1",
     "@types/express": "5.0.0",
-    "@types/lodash": "4.17.9",
+    "@types/lodash": "4.17.10",
     "@types/node": "20.16.10",
     "@types/ws": "8.5.12",
     "@typescript-eslint/eslint-plugin": "8.8.0",
